@@ -1,0 +1,53 @@
+/* Full screen center */
+.login-wrapper {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.login-title {
+  color: #1F2F4A;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Inputs */
+.custom-input {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.custom-input:focus {
+  border-color: #4E6784;
+  box-shadow: 0 0 0 0.15rem rgba(78, 103, 132, 0.25);
+}
+
+/* Login Button */
+.btn-login-primary {
+  background-color: #1F2F4A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-login-primary:hover {
+  background-color: #0B1F33;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}

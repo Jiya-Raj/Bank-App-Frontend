@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center align-items-center mt-5">
+
+  <div class="form-card p-4">
+
+    <h4 class="text-center mb-4 form-title">
+      Deposit
+    </h4>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+      <!-- Account Number -->
+      <div class="mb-3">
+        <label class="form-label">Account Number</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="accountNumber"
+          name="accountNumber"
+          required
+          #accountRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="accountRef.invalid && accountRef.touched">
+          Account number is required
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div class="mb-4">
+        <label class="form-label">Amount</label>
+        <input
+          type="number"
+          class="form-control custom-input"
+          [(ngModel)]="amount"
+          name="amount"
+          min="1"
+          required
+          #amountRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="amountRef.errors?.['required'] && amountRef.touched">
+          Amount is required
+        </div>
+
+        <div class="text-danger small mt-1"
+             *ngIf="amountRef.errors?.['min'] && amountRef.touched">
+          Amount must be greater than 0
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div *ngIf="successMessage" class="alert alert-success py-2">
+        {{ successMessage }}
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger py-2">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-form-primary w-100"
+        [disabled]="form.invalid">
+        Deposit
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

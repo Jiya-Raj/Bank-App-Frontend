@@ -1,0 +1,53 @@
+<div class="d-flex justify-content-center align-items-center mt-5">
+
+  <div class="form-card p-4">
+
+    <h4 class="text-center mb-4 form-title">
+      Create Account
+    </h4>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="account.name"
+          name="name"
+          required
+          #nameRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="nameRef.invalid && nameRef.touched">
+          Name is required
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Initial Balance</label>
+        <input
+          type="number"
+          class="form-control custom-input"
+          [(ngModel)]="account.initialBalance"
+          name="initialBalance"
+          min="0"
+          required
+          #balanceRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="balanceRef.invalid && balanceRef.touched">
+          Balance must be 0 or greater
+        </div>
+      </div>
+
+      <button class="btn btn-form-primary w-100"
+              [disabled]="form.invalid">
+        Create Account
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

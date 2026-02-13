@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+
+  <div class="login-card p-4">
+
+    <h4 class="text-center mb-4 login-title">
+      BankApp Login
+    </h4>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control custom-input"
+          [(ngModel)]="username"
+          name="username"
+          required
+          #usernameRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="usernameRef.invalid && usernameRef.touched">
+          Username is required
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control custom-input"
+          [(ngModel)]="password"
+          name="password"
+          required
+          minlength="4"
+          #passwordRef="ngModel">
+
+        <div class="text-danger small mt-1"
+             *ngIf="passwordRef.invalid && passwordRef.touched">
+          Password must be at least 4 characters
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div class="text-danger text-center mb-3"
+           *ngIf="error">
+        {{ error }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-login-primary w-100"
+        [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+    </form>
+
+  </div>
+
+</div>

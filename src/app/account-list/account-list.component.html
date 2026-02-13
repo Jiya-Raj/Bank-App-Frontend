@@ -1,0 +1,87 @@
+<div class="container mt-4">
+
+  <div class="card shadow p-4">
+
+    
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="mb-0">Accounts</h4>
+
+     
+      <button *ngIf="role === 'MANAGER'"
+              class="btn btn-primary btn-sm"
+              routerLink="/create-account">
+        + Create Account
+      </button>
+    </div>
+
+   
+    <div *ngIf="accounts.length === 0" class="alert alert-secondary">
+      No accounts available.
+    </div>
+
+    <table *ngIf="accounts.length > 0"
+           class="table table-hover align-middle">
+
+      <thead class="table-dark">
+        <tr>
+          <th>Account Number</th>
+          <th>Name</th>
+          <th>Balance</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let acc of accounts">
+
+          <td>
+            <span class="badge bg-secondary">
+              {{ acc.accountNumber }}
+            </span>
+          </td>
+
+          <td>{{ acc.name }}</td>
+
+          <td class="fw-bold">
+            {{ acc.balance | currency:'INR' }}
+          </td>
+
+          <td class="text-center">
+
+  <div class="action-group">
+
+    <button class="btn btn-sm btn-warm-view"
+            (click)="accountDetails(acc.accountNumber)">
+      View
+    </button>
+
+    <button class="btn btn-sm btn-warm-history"
+            [routerLink]="['/history', acc.accountNumber]">
+      History
+    </button>
+
+    <button *ngIf="role === 'MANAGER'"
+            class="btn btn-sm btn-warm-update"
+            (click)="updateAccount(acc.accountNumber)">
+      Update
+    </button>
+
+    <button *ngIf="role === 'MANAGER'"
+            class="btn btn-sm btn-warm-delete"
+            (click)="deleteAccount(acc.accountNumber)">
+      Delete
+    </button>
+
+  </div>
+
+</td>
+
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

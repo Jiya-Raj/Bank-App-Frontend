@@ -1,0 +1,65 @@
+/* Button group spacing */
+.action-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Smooth hover */
+.btn {
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 6px 14px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Palette Based Buttons ===== */
+
+/* View - Deep Navy */
+.btn-warm-view {
+  background-color: #0B1F33;
+  color: white;
+  border: none;
+}
+
+.btn-warm-view:hover {
+  background-color: #1F2F4A;
+}
+
+/* History - Slate Blue */
+.btn-warm-history {
+  background-color: #4E6784;
+  color: white;
+  border: none;
+}
+
+.btn-warm-history:hover {
+  background-color: #3d536c;
+}
+
+/* Update - Steel Blue */
+.btn-warm-update {
+  background-color: #7A8FA8;
+  color: white;
+  border: none;
+}
+
+.btn-warm-update:hover {
+  background-color: #657b94;
+}
+
+/* Delete - Muted Dark Blue-Grey */
+.btn-warm-delete {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+}
+
+.btn-warm-delete:hover {
+  background-color: #1F2F4A;
+}

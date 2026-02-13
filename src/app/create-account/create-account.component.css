@@ -1,0 +1,44 @@
+/* Card Container */
+.form-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Title */
+.form-title {
+  color: #1F2F4A;
+  font-weight: 600;
+}
+
+/* Custom Inputs */
+.custom-input {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  transition: all 0.2s ease;
+}
+
+.custom-input:focus {
+  border-color: #4E6784;
+  box-shadow: 0 0 0 0.15rem rgba(78, 103, 132, 0.25);
+}
+
+/* Primary Button using palette */
+.btn-form-primary {
+  background-color: #1F2F4A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-form-primary:hover {
+  background-color: #0B1F33;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}

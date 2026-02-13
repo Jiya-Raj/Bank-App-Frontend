@@ -1,0 +1,82 @@
+<!-- <p style="color:black">Role: {{ role }}</p> -->
+
+<nav *ngIf="isLoggedIn"
+     class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-4">
+
+  <!-- Brand -->
+  <a class="navbar-brand fw-bold me-4"
+     routerLink="/accounts">
+    BankApp
+  </a>
+
+  <!-- Left Links -->
+  <div class="collapse navbar-collapse">
+
+    <ul class="navbar-nav me-auto">
+
+      <li class="nav-item">
+        <a routerLink="accounts"
+           routerLinkActive="active"
+           class="nav-link px-3 nav-hover">
+          Account List
+        </a>
+      </li>
+
+      <!-- Manager Only -->
+      <li class="nav-item" *ngIf="role === 'MANAGER'">
+        <a routerLink="create-account"
+           routerLinkActive="active"
+           class="nav-link px-3 nav-hover">
+          Create Account
+        </a>
+      </li>
+
+      <!-- Clerk Only -->
+      <li class="nav-item" *ngIf="role === 'CLERK'">
+        <a routerLink="deposit"
+           routerLinkActive="active"
+           class="nav-link px-3 nav-hover">
+          Deposit
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="role === 'CLERK'">
+        <a routerLink="withdraw"
+           routerLinkActive="active"
+           class="nav-link px-3 nav-hover">
+          Withdraw
+        </a>
+      </li>
+
+      <!-- Manager Only -->
+      <li class="nav-item" *ngIf="role === 'MANAGER'">
+        <a routerLink="pending"
+           routerLinkActive="active"
+           class="nav-link px-3 nav-hover">
+          Pending
+        </a>
+      </li>
+
+    </ul>
+
+    <!-- Right Section -->
+    <div class="d-flex align-items-center gap-3">
+
+      <span class="text-light small">
+        {{ role }}
+      </span>
+
+      <button class="btn btn-outline-light btn-sm px-3"
+              (click)="logout()">
+        Logout
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

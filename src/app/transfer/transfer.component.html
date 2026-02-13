@@ -1,0 +1,47 @@
+<div class="col-md-6 offset-md-3">
+  <h3>Transfer</h3>
+
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>From Account Number</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="fromaccountNumber"
+        name="fromaccountNumber"
+        required>
+    </div>
+
+    <div class="form-group">
+      <label>To Account Number</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="toaccountNumber"
+        name="toaccountNumber"
+        required>
+    </div>
+
+
+    <div class="form-group">
+      <label>Amount</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="amount"
+        name="amount"
+        required>
+    </div>
+
+
+    <br>
+
+
+    <button type="submit" class="btn btn-success">
+      Submit
+    </button>
+
+
+  </form>
+</div>

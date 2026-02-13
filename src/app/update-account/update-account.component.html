@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3 mt-4">
+  <div class="card shadow p-4">
+    <h3 class="mb-4 text-center">Update Account</h3>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">Account Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="account.name"
+          name="name"
+          required
+          minlength="3"
+          #nameRef="ngModel">
+
+        <div class="text-danger small"
+             *ngIf="nameRef.errors?.['required'] && nameRef.touched">
+          Name is required
+        </div>
+
+        <div class="text-danger small"
+             *ngIf="nameRef.errors?.['minlength'] && nameRef.touched">
+          Name must be at least 3 characters
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="form.invalid">
+        Update Account
+      </button>
+
+    </form>
+  </div>
+</div>
