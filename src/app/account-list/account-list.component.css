@@ -63,3 +63,50 @@
 .btn-warm-delete:hover {
   background-color: #1F2F4A;
 }
+
+.btn-warm-create {
+  background-color: #1F2F4A;
+  color: white;
+  border: none;
+}
+
+.btn-warm-create:hover {
+  background-color: #0B1F33;
+}
+
+/* Closed account styling */
+.closed-row {
+  background-color: #f4f6f8;   /* light grey instead of red */
+  opacity: 0.85;
+}
+
+/* Make closed badge subtle */
+.closed-badge {
+  background-color: #8c9aa8;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.account-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* Active */
+.badge-active {
+  background-color: #4E6784;
+  color: white;
+}
+
+/* Closed */
+.badge-closed {
+  background-color: #9aa5b1;
+  color: white;
+  opacity: 0.85;
+}
+
+

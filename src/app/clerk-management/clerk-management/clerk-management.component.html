@@ -1,78 +1,83 @@
 <div class="container mt-5">
 
-  <div class="card shadow p-4">
+  <div class="card shadow-lg border-0 custom-card">
 
-    <h4 class="mb-4">Clerk Management</h4>
-
-    <!-- Success / Error -->
-    <div *ngIf="successMessage" class="alert alert-success">
-      {{ successMessage }}
+    <div class="card-header custom-header">
+      <h4 class="mb-0">Clerk Management</h4>
     </div>
 
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
+    <div class="card-body">
 
-    <!-- Create Clerk -->
-    <form #form="ngForm" (ngSubmit)="createClerk()">
-
-      <div class="row mb-3">
-
-        <div class="col">
-          <input type="text"
-                 class="form-control"
-                 placeholder="Username"
-                 [(ngModel)]="newClerk.username"
-                 name="username"
-                 required>
-        </div>
-
-        <div class="col">
-          <input type="password"
-                 class="form-control"
-                 placeholder="Password"
-                 [(ngModel)]="newClerk.password"
-                 name="password"
-                 required
-                 minlength="6">
-        </div>
-
-        <div class="col-auto">
-          <button class="btn btn-primary"
-                  [disabled]="form.invalid">
-            Add Clerk
-          </button>
-        </div>
-
+      <!-- Success / Error Messages -->
+      <div *ngIf="successMessage" class="custom-alert success-alert">
+        {{ successMessage }}
       </div>
-    </form>
 
-    <hr>
+      <div *ngIf="errorMessage" class="custom-alert error-alert">
+        {{ errorMessage }}
+      </div>
 
-    <!-- Clerk List -->
-    <table class="table table-hover">
+      <!-- Create Clerk Form -->
+      <form #form="ngForm" (ngSubmit)="createClerk()">
 
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th class="text-end">Action</th>
-        </tr>
-      </thead>
+        <div class="row mb-4 align-items-end">
 
-      <tbody>
-        <tr *ngFor="let clerk of clerks">
-          <td>{{ clerk }}</td>
-          <td class="text-end">
-            <button class="btn btn-sm btn-danger"
-                    (click)="deleteClerk(clerk)">
-              Delete
+          <div class="col">
+            <label class="form-label small text-muted">Username</label>
+            <input type="text"
+                   class="form-control custom-input"
+                   [(ngModel)]="newClerk.username"
+                   name="username"
+                   required>
+          </div>
+
+          <div class="col">
+            <label class="form-label small text-muted">Password</label>
+            <input type="password"
+                   class="form-control custom-input"
+                   [(ngModel)]="newClerk.password"
+                   name="password"
+                   required
+                   minlength="6">
+          </div>
+
+          <div class="col-auto">
+            <button class="btn btn-warm-create"
+                    [disabled]="form.invalid">
+              Add Clerk
             </button>
-          </td>
-        </tr>
-      </tbody>
+          </div>
 
-    </table>
+        </div>
+      </form>
 
+      <hr class="custom-divider">
+
+      <!-- Clerk Table -->
+      <table class="table table-hover align-middle custom-table">
+
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th class="text-end">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let clerk of clerks">
+            <td class="fw-medium">{{ clerk }}</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-warm-delete"
+                      (click)="deleteClerk(clerk)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
   </div>
 
 </div>

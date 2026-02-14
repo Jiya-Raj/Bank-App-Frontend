@@ -13,10 +13,11 @@
     </button>
 
       <button *ngIf="role === 'MANAGER'"
-              class="btn btn-primary btn-sm"
-              routerLink="/create-account">
-        + Create Account
-      </button>
+        class="btn btn-sm btn-warm-create"
+        routerLink="/create-account">
+  + Create Account
+</button>
+
     </div>
 
    
@@ -38,13 +39,15 @@
 
       <tbody>
         <tr *ngFor="let acc of accounts"
-    [class.table-danger]="!acc.active">
+    [class.closed-row]="!acc.active">
 
 
           <td>
-            <span class="badge" [ngClass]="acc.active ? 'bg-secondary' : 'bg-danger'">
-              {{ acc.accountNumber }}
-            </span>
+            <span class="badge account-badge"
+      [ngClass]="acc.active ? 'badge-active' : 'badge-closed'">
+  {{ acc.accountNumber }}
+</span>
+
           </td>
 
           <td>{{ acc.name }}</td>
@@ -80,12 +83,6 @@
     </button>
 
   </div>
-  <span *ngIf="!acc.active"
-      class="text-muted small">
-  Closed
-</span>
-
-
 </td>
 
 

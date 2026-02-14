@@ -1,43 +1,45 @@
 <div class="container mt-5" *ngIf="data">
 
-  <h3 class="mb-4">Manager Dashboard</h3>
+  <div class="dashboard-header mb-4">
+    <h3 class="mb-0">Manager Dashboard</h3>
+  </div>
 
   <div class="row g-4">
 
     <div class="col-md-4">
-      <div class="card shadow p-3 text-center">
-        <h6>Active Accounts</h6>
-        <h3>{{ data.totalActiveAccounts }}</h3>
+      <div class="stat-card">
+        <div class="stat-title">Active Accounts</div>
+        <div class="stat-value">{{ data.totalActiveAccounts }}</div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow p-3 text-center">
-        <h6>Closed Accounts</h6>
-        <h3>{{ data.totalClosedAccounts }}</h3>
+      <div class="stat-card">
+        <div class="stat-title">Closed Accounts</div>
+        <div class="stat-value muted">{{ data.totalClosedAccounts }}</div>
       </div>
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow p-3 text-center">
-        <h6>Total Clerks</h6>
-        <h3>{{ data.totalClerks }}</h3>
+      <div class="stat-card">
+        <div class="stat-title">Total Clerks</div>
+        <div class="stat-value">{{ data.totalClerks }}</div>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="card shadow p-3 text-center">
-        <h6>Pending Withdrawals</h6>
-        <h3 class="text-warning">{{ data.pendingWithdrawals }}</h3>
+      <div class="stat-card highlight">
+        <div class="stat-title">Pending Withdrawals</div>
+        <div class="stat-value">{{ data.pendingWithdrawals }}</div>
       </div>
     </div>
 
     <div class="col-md-6">
-      <div class="card shadow p-3 text-center">
-        <h6>Total Bank Balance</h6>
-        <h3 class="text-success">
+      <div class="stat-card balance-card">
+        <div class="stat-title">Total Bank Balance</div>
+        <div class="stat-value">
           {{ data.totalBankBalance | currency:'INR' }}
-        </h3>
+        </div>
       </div>
     </div>
 

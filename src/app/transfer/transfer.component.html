@@ -1,49 +1,51 @@
 <div class="d-flex justify-content-center align-items-center mt-5">
 
-  <div class="form-card p-4">
+  <div class="transfer-card p-4">
 
-    <h4 class="text-center mb-4">Transfer</h4>
+    <div class="transfer-header mb-4">
+      <h4 class="mb-0 text-center">Transfer Funds</h4>
+    </div>
 
-    <!-- Success / Error -->
-    <div *ngIf="successMessage" class="alert alert-success py-2">
+    <!-- Messages -->
+    <div *ngIf="successMessage" class="custom-alert success-alert">
       {{ successMessage }}
     </div>
 
-    <div *ngIf="errorMessage" class="alert alert-danger py-2">
+    <div *ngIf="errorMessage" class="custom-alert error-alert">
       {{ errorMessage }}
     </div>
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-      <!-- From Account -->
+      <!-- From -->
       <div class="mb-3">
-        <label class="form-label">From Account</label>
+        <label class="form-label small text-muted">From Account</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control custom-input"
           [(ngModel)]="fromAccountNumber"
           name="fromAccountNumber"
           required
           #fromRef="ngModel">
 
-        <div class="text-danger small"
+        <div class="validation-text"
              *ngIf="fromRef.invalid && fromRef.touched">
           From account is required
         </div>
       </div>
 
-      <!-- To Account -->
+      <!-- To -->
       <div class="mb-3">
-        <label class="form-label">To Account</label>
+        <label class="form-label small text-muted">To Account</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control custom-input"
           [(ngModel)]="toAccountNumber"
           name="toAccountNumber"
           required
           #toRef="ngModel">
 
-        <div class="text-danger small"
+        <div class="validation-text"
              *ngIf="toRef.invalid && toRef.touched">
           To account is required
         </div>
@@ -51,17 +53,17 @@
 
       <!-- Amount -->
       <div class="mb-4">
-        <label class="form-label">Amount</label>
+        <label class="form-label small text-muted">Amount</label>
         <input
           type="number"
-          class="form-control"
+          class="form-control custom-input"
           [(ngModel)]="amount"
           name="amount"
           min="1"
           required
           #amountRef="ngModel">
 
-        <div class="text-danger small"
+        <div class="validation-text"
              *ngIf="amountRef.invalid && amountRef.touched">
           Amount must be greater than 0
         </div>
@@ -69,7 +71,7 @@
 
       <button
         type="submit"
-        class="btn btn-success w-100"
+        class="btn btn-warm-create w-100"
         [disabled]="form.invalid">
         Submit Transfer
       </button>

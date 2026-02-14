@@ -1,0 +1,16 @@
+/* History Button - Slate Blue */
+.btn-warm-history {
+  background-color: #4E6784;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-warm-history:hover {
+  background-color: #3d536c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}

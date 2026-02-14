@@ -10,7 +10,29 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './update-account.component.html',
-  styles: ``
+  styles: `
+      .btn-warm-update {
+      background-color: #7A8FA8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 8px 16px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-warm-update:hover:not(:disabled) {
+      background-color: #657b94;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+    }
+
+    .btn-warm-update:disabled {
+      background-color: #b0b8c2;
+      cursor: not-allowed;
+    }
+
+  `
 })
 export class UpdateAccountComponent {
 

@@ -1,0 +1,52 @@
+/* Header */
+.dashboard-header {
+  background-color: #0B1F33;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+}
+
+/* Base stat card */
+.stat-card {
+  background-color: white;
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+}
+
+/* Titles */
+.stat-title {
+  font-size: 14px;
+  color: #6c7a89;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* Values */
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1F2F4A;
+}
+
+/* Muted for closed accounts */
+.muted {
+  color: #9aa5b1;
+}
+
+/* Highlight (Pending Withdrawals) */
+.highlight {
+  border-left: 5px solid #4E6784;
+}
+
+/* Balance Card */
+.balance-card {
+  background-color: #f4f6f8;
+}
