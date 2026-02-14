@@ -7,6 +7,7 @@ import { WithdrawRequest } from '../model/withdraw-request';
 import { TransferRequest } from '../model/transfer-request';
 import { AccountRequest } from '../model/account-request';
 import { Transaction } from '../model/transaction';
+import { ClerkRequest } from '../model/clerk-request';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,18 @@ rejectTransaction(id: number) {
 
 getTransactionHistory(accountNumber: string) {
   return this.http.get<Transaction[]>(`${this.baseUrl2}/history/${accountNumber}`);
+}
+
+getClerks(): Observable<string[]> {
+  return this.http.get<string[]>(`http://localhost:8080/manager/clerks`);
+}
+
+createClerk(request: ClerkRequest) {
+  return this.http.post(`http://localhost:8080/manager/clerks`, request);
+}
+
+deleteClerk(username: string) {
+  return this.http.delete(`http://localhost:8080/manager/clerks/${username}`);
 }
 
 }

@@ -1,0 +1,78 @@
+<div class="container mt-5">
+
+  <div class="card shadow p-4">
+
+    <h4 class="mb-4">Clerk Management</h4>
+
+    <!-- Success / Error -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Create Clerk -->
+    <form #form="ngForm" (ngSubmit)="createClerk()">
+
+      <div class="row mb-3">
+
+        <div class="col">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Username"
+                 [(ngModel)]="newClerk.username"
+                 name="username"
+                 required>
+        </div>
+
+        <div class="col">
+          <input type="password"
+                 class="form-control"
+                 placeholder="Password"
+                 [(ngModel)]="newClerk.password"
+                 name="password"
+                 required
+                 minlength="6">
+        </div>
+
+        <div class="col-auto">
+          <button class="btn btn-primary"
+                  [disabled]="form.invalid">
+            Add Clerk
+          </button>
+        </div>
+
+      </div>
+    </form>
+
+    <hr>
+
+    <!-- Clerk List -->
+    <table class="table table-hover">
+
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th class="text-end">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let clerk of clerks">
+          <td>{{ clerk }}</td>
+          <td class="text-end">
+            <button class="btn btn-sm btn-danger"
+                    (click)="deleteClerk(clerk)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -3,11 +3,12 @@ import { AccountService } from '../services/account.service';
 import { Router } from '@angular/router';
 import { TransferRequest } from '../model/transfer-request';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-transfer',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './transfer.component.html',
   styles: ``
 })
