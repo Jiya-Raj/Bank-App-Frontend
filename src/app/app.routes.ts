@@ -11,6 +11,7 @@ import { authGuard } from './guards/auth.guard';
 import { TransactionHistoryComponent } from './transaction-history/transaction-history.component';
 import { PendingComponent } from './pending-component/pending-component.component';
 import { ClerkManagementComponent } from './clerk-management/clerk-management/clerk-management.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 export const routes: Routes = [
    { path: 'login', component: LoginComponent },
 
@@ -24,6 +25,8 @@ export const routes: Routes = [
 { path: 'pending', component: PendingComponent, canActivate: [authGuard] },
 { path: 'history/:accountNumber', component: TransactionHistoryComponent, canActivate: [authGuard] },
 { path: 'clerks', component: ClerkManagementComponent, canActivate: [authGuard] },
+{ path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+
 
 
   { path: '', redirectTo: 'login', pathMatch: 'full' }
