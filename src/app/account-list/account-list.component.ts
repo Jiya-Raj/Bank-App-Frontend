@@ -12,7 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrl: './account-list.component.css'
 })
 export class AccountListComponent {
-
+   showAll:boolean=false;
   constructor(private accountService: AccountService,
     private router: Router,
     private authService: AuthenticationService
@@ -23,10 +23,19 @@ export class AccountListComponent {
   accounts: Account[] = [];
 
   getAccounts(): void {
-    this.accountService.getAllAccounts().subscribe(data => {
-      this.accounts = data;
-    });
+  if (this.role === 'MANAGER' && this.showAll) {
+    this.accountService.getAllAccountsIncludingClosed()
+      .subscribe(data => this.accounts = data);
+  } else {
+    this.accountService.getAllAccounts()
+      .subscribe(data => this.accounts = data);
   }
+}
+
+toggleView(): void {
+  this.showAll = !this.showAll;
+  this.getAccounts();
+}
 
   get role(): string | null {
   return this.authService.getUserRole();

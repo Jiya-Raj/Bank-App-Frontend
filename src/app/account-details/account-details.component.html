@@ -4,7 +4,14 @@
 
     <!-- Header -->
     <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">Account Details</h5>
+      <h5 class="mb-0">
+  Account Details
+  <span *ngIf="!account.active"
+        class="badge bg-danger ms-2">
+    CLOSED
+  </span>
+</h5>
+
 
       <span class="badge bg-secondary fs-6">
         {{ account.accountNumber }}

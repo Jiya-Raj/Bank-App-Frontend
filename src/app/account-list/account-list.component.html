@@ -6,7 +6,12 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h4 class="mb-0">Accounts</h4>
 
-     
+      <button *ngIf="role === 'MANAGER'"
+            class="btn btn-outline-secondary btn-sm me-2"
+            (click)="toggleView()">
+      {{ showAll ? 'Show Active Only' : 'Show All Accounts' }}
+    </button>
+
       <button *ngIf="role === 'MANAGER'"
               class="btn btn-primary btn-sm"
               routerLink="/create-account">
@@ -32,10 +37,12 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let acc of accounts">
+        <tr *ngFor="let acc of accounts"
+    [class.table-danger]="!acc.active">
+
 
           <td>
-            <span class="badge bg-secondary">
+            <span class="badge" [ngClass]="acc.active ? 'bg-secondary' : 'bg-danger'">
               {{ acc.accountNumber }}
             </span>
           </td>
@@ -60,19 +67,24 @@
       History
     </button>
 
-    <button *ngIf="role === 'MANAGER'"
-            class="btn btn-sm btn-warm-update"
-            (click)="updateAccount(acc.accountNumber)">
+    <button *ngIf="role === 'MANAGER' && acc.active"
+        class="btn btn-sm btn-warm-update"
+        (click)="updateAccount(acc.accountNumber)">
       Update
     </button>
 
-    <button *ngIf="role === 'MANAGER'"
-            class="btn btn-sm btn-warm-delete"
-            (click)="deleteAccount(acc.accountNumber)">
-      Delete
+    <button *ngIf="role === 'MANAGER' && acc.active"
+        class="btn btn-sm btn-warm-delete"
+        (click)="deleteAccount(acc.accountNumber)">
+      Close
     </button>
 
   </div>
+  <span *ngIf="!acc.active"
+      class="text-muted small">
+  Closed
+</span>
+
 
 </td>
 

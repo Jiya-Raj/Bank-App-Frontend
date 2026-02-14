@@ -21,6 +21,11 @@ export class AccountService {
     return this.http.get<Account[]>(this.baseUrl);
   }
 
+  getAllAccountsIncludingClosed(): Observable<Account[]> {
+  return this.http.get<Account[]>(`${this.baseUrl}/all`);
+}
+
+
   createAccount(account: AccountRequest) {
     return this.http.post(this.baseUrl, account);
   }
