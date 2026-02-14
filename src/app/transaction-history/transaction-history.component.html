@@ -31,7 +31,9 @@
             <th>Type</th>
             <th>Amount</th>
             <th>Status</th>
-            <th>Date</th>
+<th>Performed By</th>
+<th>Date</th>
+
           </tr>
         </thead>
 
@@ -41,21 +43,28 @@
             <!-- Type -->
             <td>
               <span class="fw-semibold"
-                    [ngClass]="{
-                      'text-success': tx.transactionType === 'DEPOSIT',
-                      'text-danger': tx.transactionType === 'WITHDRAWAL'
-                    }">
-                {{ tx.transactionType === 'DEPOSIT' ? '⬆ ' : '⬇ ' }}
-                {{ tx.transactionType }}
+                   [ngClass]="{
+  'text-success': tx.transactionType === 'DEPOSIT' || tx.transactionType === 'TRANSFER_IN',
+  'text-danger': tx.transactionType === 'WITHDRAWAL' || tx.transactionType === 'TRANSFER_OUT'
+}"
+
+>
+                <span *ngIf="tx.transactionType === 'DEPOSIT'">⬆ DEPOSIT</span>
+<span *ngIf="tx.transactionType === 'WITHDRAWAL'">⬇ WITHDRAWAL</span>
+<span *ngIf="tx.transactionType === 'TRANSFER_IN'">⬆ TRANSFER IN</span>
+<span *ngIf="tx.transactionType === 'TRANSFER_OUT'">⬇ TRANSFER OUT</span>
+
               </span>
             </td>
 
             <!-- Amount -->
             <td class="fw-bold"
                 [ngClass]="{
-                  'text-success': tx.transactionType === 'DEPOSIT',
-                  'text-danger': tx.transactionType === 'WITHDRAWAL'
-                }">
+  'text-success': tx.transactionType === 'DEPOSIT' || tx.transactionType === 'TRANSFER_IN',
+  'text-danger': tx.transactionType === 'WITHDRAWAL' || tx.transactionType === 'TRANSFER_OUT'
+}"
+
+>
               {{ tx.amount | currency:'INR' }}
             </td>
 
@@ -84,8 +93,13 @@
 
             <!-- Date -->
             <td>
-              {{ tx.createdAt | date:'medium' }}
-            </td>
+  {{ tx.performedBy }}
+</td>
+
+<td>
+  {{ tx.createdAt | date:'medium' }}
+</td>
+
 
           </tr>
         </tbody>

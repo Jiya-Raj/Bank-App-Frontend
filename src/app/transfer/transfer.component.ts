@@ -12,9 +12,13 @@ import { FormsModule } from '@angular/forms';
   styles: ``
 })
 export class TransferComponent {
- fromaccountNumber: string = '';
-  toaccountNumber: string = '';
+  fromAccountNumber: string = '';
+  toAccountNumber: string = '';
   amount: number = 0;
+  successMessage: string = '';
+  errorMessage: string = '';
+
+
 
 
   constructor(
@@ -24,24 +28,31 @@ export class TransferComponent {
 
 
   onSubmit(): void {
+    if (this.fromAccountNumber === this.toAccountNumber) {
+    this.errorMessage = "Cannot transfer to the same account";
+    return;
+  }
+
     const request: TransferRequest = {
-      fromaccountNumber: this.fromaccountNumber,
-      toaccountNumber: this.toaccountNumber,
+      fromAccountNumber: this.fromAccountNumber,
+      toAccountNumber: this.toAccountNumber,
       amount: this.amount
     };
 
   this.accountService.transfer(request).subscribe({
-    next: () => this.router.navigate(['/accounts']),
+    next: () => {
+      this.successMessage = "Transfer completed successfully";
+      this.errorMessage = '';
+
+      setTimeout(() => {
+        this.router.navigate(['/accounts']);
+      }, 1500);
+    },
     error: (err) => {
-      if (err.status === 403) {
-        alert(err.error?.error || 'Access denied');
-      }
+      this.errorMessage = err.error?.detail || "Transfer failed";
+      this.successMessage = '';
     }
   });
-  
-    // this.accountService.transfer(request).subscribe(() => {
-    //   this.router.navigate(['/accounts']);
-    // });
 
 
   }

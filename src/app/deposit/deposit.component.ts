@@ -37,7 +37,7 @@ errorMessage: string = '';
       }, 1000);
     },
     error: (err) => {
-      this.errorMessage = err.error?.message || "Deposit failed";
+      this.errorMessage = err.error?.detail || "Deposit failed";
     }
   });
   }

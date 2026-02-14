@@ -5,4 +5,5 @@ export interface Transaction {
   amount: number;
   status: string;
   createdAt: string;
+  performedBy: string;
 }

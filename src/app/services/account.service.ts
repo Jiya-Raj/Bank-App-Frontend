@@ -47,9 +47,10 @@ export class AccountService {
   return this.http.post<any>(`${this.baseUrl2}/withdraw`, request);
 }
 
-  transfer(request: TransferRequest) {
-    return this.http.put<void>(`${this.baseUrl2}/transfer`, request);
-  }
+  transfer(request: TransferRequest): Observable<Transaction[]> {
+  return this.http.post<Transaction[]>(`${this.baseUrl2}/transfer`, request);
+}
+
 
   getPendingTransactions() {
   return this.http.get<Transaction[]>(`${this.baseUrl2}/pending`);

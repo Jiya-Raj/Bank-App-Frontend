@@ -1,47 +1,81 @@
-<div class="col-md-6 offset-md-3">
-  <h3>Transfer</h3>
+<div class="d-flex justify-content-center align-items-center mt-5">
 
+  <div class="form-card p-4">
 
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label>From Account Number</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="fromaccountNumber"
-        name="fromaccountNumber"
-        required>
+    <h4 class="text-center mb-4">Transfer</h4>
+
+    <!-- Success / Error -->
+    <div *ngIf="successMessage" class="alert alert-success py-2">
+      {{ successMessage }}
     </div>
 
-    <div class="form-group">
-      <label>To Account Number</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="toaccountNumber"
-        name="toaccountNumber"
-        required>
+    <div *ngIf="errorMessage" class="alert alert-danger py-2">
+      {{ errorMessage }}
     </div>
 
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
 
-    <div class="form-group">
-      <label>Amount</label>
-      <input
-        type="number"
-        class="form-control"
-        [(ngModel)]="amount"
-        name="amount"
-        required>
-    </div>
+      <!-- From Account -->
+      <div class="mb-3">
+        <label class="form-label">From Account</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="fromAccountNumber"
+          name="fromAccountNumber"
+          required
+          #fromRef="ngModel">
 
+        <div class="text-danger small"
+             *ngIf="fromRef.invalid && fromRef.touched">
+          From account is required
+        </div>
+      </div>
 
-    <br>
+      <!-- To Account -->
+      <div class="mb-3">
+        <label class="form-label">To Account</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="toAccountNumber"
+          name="toAccountNumber"
+          required
+          #toRef="ngModel">
 
+        <div class="text-danger small"
+             *ngIf="toRef.invalid && toRef.touched">
+          To account is required
+        </div>
+      </div>
 
-    <button type="submit" class="btn btn-success">
-      Submit
-    </button>
+      <!-- Amount -->
+      <div class="mb-4">
+        <label class="form-label">Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="amount"
+          name="amount"
+          min="1"
+          required
+          #amountRef="ngModel">
 
+        <div class="text-danger small"
+             *ngIf="amountRef.invalid && amountRef.touched">
+          Amount must be greater than 0
+        </div>
+      </div>
 
-  </form>
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        [disabled]="form.invalid">
+        Submit Transfer
+      </button>
+
+    </form>
+
+  </div>
+
 </div>

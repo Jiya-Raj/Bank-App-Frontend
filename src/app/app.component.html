@@ -48,6 +48,15 @@
         </a>
       </li>
 
+      <li class="nav-item" *ngIf="role === 'CLERK'">
+  <a routerLink="transfer"
+     routerLinkActive="active"
+     class="nav-link px-3 nav-hover">
+    Transfer
+  </a>
+</li>
+
+
       <!-- Manager Only -->
       <li class="nav-item" *ngIf="role === 'MANAGER'">
         <a routerLink="pending"

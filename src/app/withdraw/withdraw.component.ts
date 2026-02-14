@@ -46,7 +46,7 @@ errorMessage: string = '';
       }, 1500);
     },
     error: (err) => {
-      this.errorMessage = err.error?.message || "Withdrawal failed";
+      this.errorMessage = err.error?.detail || "Withdrawal failed";
     }
   });
 }
